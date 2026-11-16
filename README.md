@@ -1,10 +1,23 @@
 # SOC Desk
 
-Offline desktop simulator: a day in the life of a Tier 1 SOC analyst.
+Offline desktop simulator: a day in the life of a Tier 1 SOC analyst. Triage a live alert queue, pivot through SIEM and EDR data, and decide what to close and what to escalate. Built with Electron and plain JavaScript, no backend or internet needed.
+
+![Alert queue and ticket](docs/screenshots/queue.png)
+
+| SIEM search | EDR process tree |
+|---|---|
+| ![SIEM](docs/screenshots/siem.png) | ![EDR](docs/screenshots/edr.png) |
 
 ## Run
-- Double-click the **SOC Desk** shortcut, or `npm start` in this folder.
-- Rebuild the standalone exe: `npm run package` (output in `dist/`).
+Requires [Node.js](https://nodejs.org/) and Windows (the packaged exe targets win32-x64).
+```
+git clone https://github.com/juan-combrinck/soc-sim.git
+cd soc-sim
+npm install
+npm start
+```
+- Run the tests: `npm test`
+- Build the standalone exe: `npm run package` (output in `dist/`, not committed to git).
 
 ## Tutorials
 Press **Take tutorial** on the main menu. Two guided runs on a safe training shift (colleagues reply in seconds):
@@ -18,7 +31,7 @@ Pivot through **SIEM** (field search: `host:` `user:` `src:` `dst:` `source:` `e
 **EDR** (process tree / network / files, isolate host), **Intel** (IOC lookup, change calendar, assets), and **Team** chat.
 Ask the user or service desk, then **close** with a reason or **escalate** to T2 (Bob Harlan, Priya Nair) or IR (Marcus Webb, Imani Brooks).
 
-- Escalate a false positive: the T2/IR analyst tells you it is a false positive and why.
+- Escalate a false positive: the T2/IR analyst calmly tells you it is a false positive and why, and may suggest what detail to include next time. There is no penalty or manager meeting for a mistaken escalation.
 - Escalate the real incident: they confirm a true positive, take ownership, and IR contains the host.
 - Close the real incident as FP/benign: a flashing red WARNING, the missed evidence, and a failing score.
 - Each sim contains exactly **one** true-positive incident (up to 3 correlated alerts); everything else is noise.
@@ -35,3 +48,6 @@ Change the warning text in the Settings (gear) dialog.
 
 ## Add a sim
 Drop a file in `js/scenarios/`, add its `<script>` tag (tutorial steps live in `js/tutorial.js`) to `index.html`, follow `SCHEMA.md`, and run `npm test`.
+
+## License
+MIT, see [LICENSE](LICENSE). All companies, people, domains and indicators in the scenarios are fictional.
