@@ -1,0 +1,20 @@
+{
+  "name": "soc-desk",
+  "productName": "SOC Desk",
+  "version": "1.0.0",
+  "description": "A day in the life of a Tier 1 SOC analyst. Offline desktop simulator.",
+  "main": "main.js",
+  "author": "SOC Desk",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/invariants.js && node test/engine.js",
+    "package": "electron-packager . \"SOC Desk\" --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/icon.ico --asar --ignore=^/dist --ignore=^/test --ignore=^/smoke-out --ignore=^/SCHEMA.md --ignore=^/README.md",
+    "smoke": "electron . --smoke"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.2.3"
+  }
+}
